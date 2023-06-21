@@ -1,0 +1,34 @@
+<div>
+  <p>Time taken to load dropdown: {{ displayTimeDifference }} milliseconds</p>
+</div>
+<div>
+  <label for="label1">Select Label1:</label>
+  <select
+    id="label1"
+    [(ngModel)]="selectedLabel1"
+    (change)="filterAndSortData()"
+  >
+    <option value="">All</option>
+    <option *ngFor="let label1 of uniqueLabel1Values" [value]="label1">
+      {{ label1 }}
+    </option>
+  </select>
+</div>
+
+<div *ngIf="filteredData.length > 0">
+  <h3>Filtered and Sorted Data:</h3>
+  <table>
+    <thead>
+      <tr>
+        <th>Label2</th>
+        <th>Metric1</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of filteredData">
+        <td>{{ item.label2 }}</td>
+        <td>{{ item.metric1 }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
